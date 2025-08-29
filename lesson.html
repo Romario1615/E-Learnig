@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lección – Mini E‑Learning IA</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="lesson-layout">
+    <header class="site-header">
+      <div class="container row space-between center">
+        <a class="brand" href="index.html">
+          <span class="logo" aria-hidden="true">?</span>
+          <span>AI Learning</span>
+        </a>
+        <nav class="site-nav">
+          <button id="btn-back" class="btn btn-ghost">Atrás</button>
+          <button id="btn-home" class="btn btn-primary">Inicio</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="lesson">
+      <div class="container lesson-grid">
+        <aside class="playlist" id="playlist"></aside>
+
+        <section class="player">
+          <div class="breadcrumb" id="breadcrumb"></div>
+          <h1 id="title" class="lesson-title"></h1>
+          <p id="summary" class="lesson-summary"></p>
+
+          <div id="video-wrapper" class="video-wrapper">
+            <!-- Video or embed here -->
+          </div>
+
+          <div class="controls row space-between wrap">
+            <div class="row gap">
+              <button id="btn-prev" class="btn btn-ghost">Anterior</button>
+              <button id="btn-next" class="btn btn-primary">Siguiente</button>
+            </div>
+            <div class="row gap">
+              <button id="btn-complete" class="btn btn-success">Marcar como completada</button>
+            </div>
+          </div>
+
+          <section class="notes">
+            <h2>Notas personales</h2>
+            <textarea id="notes" rows="6" placeholder="Escribe apuntes, ideas, tareas. (se guardan en este navegador)"></textarea>
+            <div class="notes-actions row space-between wrap">
+              <small id="notes-status">Guardado</small>
+              <button id="btn-clear-notes" class="btn btn-ghost">Borrar notas</button>
+            </div>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container row space-between wrap center">
+        <p>© <span id="year"></span> AI Learning - Mini e‑learning IA.</p>
+      </div>
+    </footer>
+
+    <script defer src="assets/js/data.global.js"></script>
+    <script defer src="assets/js/lesson.nomodule.js"></script>
+  </body>
+  </html>
