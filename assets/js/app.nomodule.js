@@ -8,7 +8,7 @@
   function minutesToPretty(mins){ if(mins<60) return `${mins}m`; const h=Math.floor(mins/60),m=mins%60; return m?`${h}h ${m}m`:`${h}h`; }
   function sumDuration(ls){ return ls.reduce((a,l)=>a+(l.durationMin||0),0); }
   function renderStats(lessons, completed){ const total=lessons.length; const done=lessons.filter(l=>completed[l.id]).length; const pct= total? Math.round((done/total)*100):0; const mins=sumDuration(lessons); const elL=document.getElementById('stat-lessons'); const elP=document.getElementById('stat-progress'); const elT=document.getElementById('stat-time'); if(elL) elL.textContent=String(total); if(elP) elP.textContent=`${pct}%`; if(elT) elT.textContent=minutesToPretty(mins); }
-  function cardTemplate(lesson, completed){ const catLabel={ basics:'Básicos', prompting:'Prompting', aplicaciones:'Apps' }[lesson.category]||lesson.category; const doneClass=completed?'done':''; const width=completed?'100%':'0%'; const href=`lesson.html?id=${encodeURIComponent(lesson.id)}`; return `
+  function cardTemplate(lesson, completed){ const catLabel={ fundamentos:'Fundamentos', prompting:'Prompting', multimedia:'Multimedia', contenido:'Contenido', aplicaciones:'Aplicaciones', evaluacion:'Evaluación' }[lesson.category]||lesson.category; const doneClass=completed?'done':''; const width=completed?'100%':'0%'; const href=`lesson.html?id=${encodeURIComponent(lesson.id)}`; return `
     <article class="card">
       <div class="top">
         <span class="badge ${doneClass}">${catLabel}</span>

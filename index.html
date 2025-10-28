@@ -3,8 +3,69 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mini E‑Learning IA</title>
-    <meta name="description" content="Curso introductorio a la Inteligencia Artificial con 16 lecciones en video." />
+    <title>Mini E‑Learning IA - Curso Gratuito de Inteligencia Artificial</title>
+    <meta name="description" content="Aprende Inteligencia Artificial gratis con 18 lecciones prácticas. Sin programar. Certificado incluido. Herramientas IA, prompting, automatización y más." />
+    <meta name="keywords" content="inteligencia artificial, IA, curso gratis, ChatGPT, prompting, machine learning, automatización, herramientas IA, certificado IA" />
+    <meta name="author" content="Instituto Tecnológico Superior Japón" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ai-learning-japon.edu.ec/" />
+    <meta property="og:title" content="Mini E-Learning IA - Curso Gratuito de Inteligencia Artificial" />
+    <meta property="og:description" content="18 lecciones prácticas para aprender IA sin programar. Certificado gratuito incluido." />
+    <meta property="og:image" content="https://ai-learning-japon.edu.ec/assets/images/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ai-learning-japon.edu.ec/" />
+    <meta property="twitter:title" content="Mini E-Learning IA - Curso Gratuito" />
+    <meta property="twitter:description" content="18 lecciones prácticas para aprender IA sin programar." />
+    <meta property="twitter:image" content="https://ai-learning-japon.edu.ec/assets/images/og-image.jpg" />
+
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Introducción práctica a la Inteligencia Artificial",
+      "description": "Curso introductorio gratuito de IA con 18 lecciones en video. Aprende a usar herramientas de IA sin programar.",
+      "provider": {
+        "@type": "EducationalOrganization",
+        "name": "Instituto Tecnológico Superior Japón",
+        "sameAs": "https://ai-learning-japon.edu.ec/"
+      },
+      "educationalLevel": "Beginner",
+      "inLanguage": "es",
+      "courseMode": "online",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "online",
+        "courseWorkload": "PT3H30M"
+      },
+      "numberOfCredits": 18,
+      "timeRequired": "PT3H30M",
+      "isAccessibleForFree": true,
+      "teaches": ["Inteligencia Artificial", "Prompting", "Machine Learning", "Herramientas IA"],
+      "syllabusSections": [
+        {
+          "@type": "Syllabus",
+          "name": "Fundamentos de IA",
+          "description": "Conceptos básicos de Inteligencia Artificial"
+        },
+        {
+          "@type": "Syllabus",
+          "name": "Prompting",
+          "description": "Comunicación efectiva con modelos de IA"
+        },
+        {
+          "@type": "Syllabus",
+          "name": "Aplicaciones prácticas",
+          "description": "Uso de IA en contextos reales"
+        }
+      ]
+    }
+    </script>
+
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%2300e5ff'/%3E%3Cpath d='M50 20l20 60-20-12-20 12z' fill='%2300ffa3'/%3E%3C/svg%3E" />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
@@ -15,7 +76,10 @@
           <span class="logo" aria-hidden="true">?</span>
           <span>AI Learning</span>
         </a>
-        <nav class="site-nav"></nav>
+        <nav class="site-nav">
+          <a class="nav-link" href="about.html">Acerca de</a>
+          <a class="nav-link" href="faq.html">FAQ</a>
+        </nav>
       </div>
     </header>
 
@@ -23,34 +87,147 @@
       <section class="hero">
         <div class="container">
           <h1>Introducción práctica a la Inteligencia Artificial</h1>
-          <p>16 lecciones en video para iniciarte, crear, y automatizar con IA. Sin rodeos, con ejemplos reales y tareas accionables.</p>
+          <p>18 lecciones en video para iniciarte, crear, y automatizar con IA. Sin rodeos, con ejemplos reales y tareas accionables.</p>
           <div class="cta row gap">
             <a class="btn btn-primary" href="lesson.html?id=leccion-1">Ir a la primera lección</a>
             <a class="btn btn-ghost" href="#curriculum">Ver temario</a>
           </div>
           <div class="stats row gap">
-            <div class="stat"><strong id="stat-lessons">16</strong><span>Lecciones</span></div>
+            <div class="stat"><strong id="stat-lessons">18</strong><span>Lecciones</span></div>
             <div class="stat"><strong id="stat-progress">0%</strong><span>Progreso</span></div>
-            <div class="stat"><strong id="stat-time">~3h</strong><span>Duración total</span></div>
+            <div class="stat"><strong id="stat-time">~3.5h</strong><span>Duración total</span></div>
           </div>
         </div>
         <div class="hero-bg" aria-hidden="true"></div>
       </section>
 
       <section id="curriculum" class="container">
+        <h2 style="font-size: 32px; margin: 0 0 24px; text-align: center; color: var(--text-primary);">Temario del Curso</h2>
+
         <div class="toolbar row space-between wrap">
           <div class="search">
             <input id="search" type="search" placeholder="Buscar lección, tema o palabra clave." />
           </div>
           <div class="filters row gap">
             <button class="chip is-active" data-filter="all">Todas</button>
-            <button class="chip" data-filter="basics">Básicos</button>
+            <button class="chip" data-filter="fundamentos">Fundamentos</button>
             <button class="chip" data-filter="prompting">Prompting</button>
-            <button class="chip" data-filter="aplicaciones">Apps</button>
+            <button class="chip" data-filter="multimedia">Multimedia</button>
+            <button class="chip" data-filter="contenido">Contenido</button>
+            <button class="chip" data-filter="aplicaciones">Aplicaciones</button>
           </div>
         </div>
 
         <div id="grid" class="grid"></div>
+      </section>
+
+      <!-- Por qué aprender IA -->
+      <section class="container" style="padding: 40px 0;">
+        <article class="lesson-content">
+          <h2>¿Por qué aprender Inteligencia Artificial?</h2>
+          <div class="content-explanation">
+            <p>La <strong>Inteligencia Artificial</strong> no es solo el futuro, es el presente. Aprender a usar herramientas de IA te da una <em>ventaja competitiva</em> tanto en tu vida personal como profesional.</p>
+
+            <div class="analogy-box">
+              <strong>💡 Piensa en la IA como...</strong>
+              <p>...un asistente personal incansable que puede ayudarte a escribir, crear, analizar, organizar y automatizar tareas que antes te tomaban horas. Es como tener un <em>equipo de expertos disponible 24/7</em>.</p>
+            </div>
+          </div>
+        </article>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px;">
+
+          <!-- Ámbito Personal -->
+          <article class="ai-tools">
+            <h2 style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 24px;">🏠</span>
+              En tu Vida Personal
+            </h2>
+            <div class="content-explanation">
+              <p><strong>Productividad multiplicada</strong></p>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0 0 16px;">
+                • <strong>Ahorra tiempo:</strong> Automatiza tareas repetitivas como responder emails, organizar información o resumir documentos largos<br>
+                • <strong>Aprende más rápido:</strong> La IA puede explicarte cualquier tema de forma personalizada, adaptándose a tu ritmo<br>
+                • <strong>Creatividad potenciada:</strong> Genera ideas, diseños, textos o contenido multimedia en minutos<br>
+                • <strong>Organización personal:</strong> Planifica tu día, gestiona proyectos personales y toma mejores decisiones basadas en datos
+              </p>
+
+              <p><strong>Desarrollo personal continuo</strong></p>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                • <strong>Acceso a conocimiento:</strong> Tienes un tutor personal para aprender idiomas, programación, diseño o cualquier habilidad<br>
+                • <strong>Mejora tu comunicación:</strong> Perfecciona tus escritos, presentaciones y comunicación verbal<br>
+                • <strong>Resolución de problemas:</strong> Encuentra soluciones creativas a desafíos cotidianos con ayuda de IA
+              </p>
+            </div>
+          </article>
+
+          <!-- Ámbito Laboral -->
+          <article class="ai-tools">
+            <h2 style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 24px;">💼</span>
+              En tu Carrera Profesional
+            </h2>
+            <div class="content-explanation">
+              <p><strong>Ventaja competitiva en el mercado</strong></p>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0 0 16px;">
+                • <strong>Perfil más valioso:</strong> Las empresas buscan profesionales que sepan usar IA para aumentar productividad<br>
+                • <strong>Salarios más altos:</strong> Profesionales con habilidades en IA ganan 20-30% más que sus pares sin estas competencias<br>
+                • <strong>Más oportunidades:</strong> Miles de trabajos remotos y mejor pagados requieren conocimiento de herramientas IA<br>
+                • <strong>Adaptabilidad:</strong> Mantente relevante en un mercado laboral que cambia rápidamente
+              </p>
+
+              <p><strong>Impacto directo en tu trabajo</strong></p>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                • <strong>Automatiza lo repetitivo:</strong> Libera tiempo para tareas de mayor valor estratégico<br>
+                • <strong>Toma mejores decisiones:</strong> Analiza datos y tendencias con IA para decisiones informadas<br>
+                • <strong>Escala tu trabajo:</strong> Haz en 1 hora lo que antes tomaba días completos<br>
+                • <strong>Innovación:</strong> Propón soluciones innovadoras usando IA en tu área de expertise
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Beneficios del Curso -->
+        <article class="glossary" style="margin-top: 32px;">
+          <h2 style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 24px;">🎯</span>
+            ¿Qué obtendrás con este curso?
+          </h2>
+          <div class="glossary-terms">
+            <div class="glossary-item">
+              <span class="glossary-term">Habilidades prácticas inmediatas</span>
+              <p class="glossary-definition">Aprenderás a usar herramientas IA reales que puedes aplicar desde el primer día. Nada de teoría abstracta, todo es práctico y aplicable.</p>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">Sin necesidad de programar</span>
+              <p class="glossary-definition">No necesitas conocimientos técnicos previos. Te enseñamos a usar plataformas no-code accesibles para cualquier persona.</p>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">Certificado de finalización</span>
+              <p class="glossary-definition">Recibe un certificado digital al completar el curso y aprobar el examen final. Válido para tu CV y LinkedIn.</p>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">Aprende a tu ritmo</span>
+              <p class="glossary-definition">18 lecciones organizadas progresivamente. Accede cuando quieras, desde donde quieras, sin presión de tiempos.</p>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">Contenido actualizado</span>
+              <p class="glossary-definition">Herramientas y técnicas de IA actuales (2024-2025), con enlaces directos a plataformas líderes del mercado.</p>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">ROI inmediato</span>
+              <p class="glossary-definition">Recupera tu inversión de tiempo rápidamente: automatiza tareas que antes te tomaban horas y multiplica tu productividad.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- CTA Final -->
+        <div style="text-align: center; margin: 48px 0 32px;">
+          <h3 style="font-size: 28px; margin: 0 0 16px; color: var(--text-primary);">Comienza tu viaje en IA hoy</h3>
+          <p style="color: var(--text-secondary); margin: 0 0 24px; font-size: 17px;">18 lecciones • ~3.5 horas • Certificado incluido • 100% gratuito</p>
+          <a class="btn btn-primary" href="lesson.html?id=leccion-1" style="font-size: 18px; padding: 14px 32px;">Iniciar primera lección</a>
+        </div>
       </section>
     </main>
 
@@ -60,7 +237,23 @@
       </div>
     </footer>
 
+    <!-- Floating CTA Button -->
+    <div class="floating-cta" id="floating-cta">
+      <a href="lesson.html?id=leccion-1" class="btn btn-primary">Comenzar curso</a>
+    </div>
+
     <script defer src="assets/js/data.global.js"></script>
     <script defer src="assets/js/app.nomodule.js"></script>
+    <script>
+      // Floating CTA visibility on scroll
+      window.addEventListener('scroll', function() {
+        const floatingCTA = document.getElementById('floating-cta');
+        if (window.scrollY > 800) {
+          floatingCTA.classList.add('visible');
+        } else {
+          floatingCTA.classList.remove('visible');
+        }
+      });
+    </script>
   </body>
   </html>
