@@ -1,35 +1,27 @@
 // Versión global para uso sin servidor (file://)
 // Expone window.COURSE
 (function () {
-  // Helper para videos de YouTube
-  const YT = (id) => `https://www.youtube.com/embed/${id}`;
-
   // Helper para videos de OneDrive
   // Uso: ONEDRIVE("https://onedrive.live.com/embed?cid=ABC&resid=XYZ&authkey=DEF")
-  // O simplemente pasa la URL completa de embed de OneDrive
   const ONEDRIVE = (url) => url;
 
-  // Helper para videos locales (MP4/WEBM)
+  // Helper para videos locales (MP4/WEBM) - opcional
   // Uso: LOCAL("assets/videos/leccion-1.mp4")
   const LOCAL = (path) => path;
 
   /* ========================================
-     EJEMPLOS DE USO:
+     CÓMO OBTENER TU URL DE ONEDRIVE:
 
-     1. YouTube:
-        video: YT("aircAruvnKk")
+     1. Sube tu video a OneDrive (https://onedrive.live.com)
+     2. Haz clic derecho en el video → "Insertar"
+     3. OneDrive te mostrará un código iframe
+     4. Copia SOLO la URL que está en src="..."
+     5. Ejemplo:
+        https://onedrive.live.com/embed?cid=123ABC&resid=456XYZ&authkey=789DEF
 
-     2. OneDrive (Recomendado para tus propios videos):
-        video: ONEDRIVE("https://onedrive.live.com/embed?cid=ABC&resid=XYZ&authkey=DEF")
+     REEMPLAZA todos los "TU_URL_ONEDRIVE_LECCION_X" con tu URL real.
 
-        Para obtener la URL de OneDrive:
-        - Sube tu video a OneDrive
-        - Clic derecho → Insertar
-        - Copia solo la URL del atributo src del iframe
-        - O ve a ONEDRIVE_VIDEOS.md para instrucciones detalladas
-
-     3. Video local:
-        video: LOCAL("assets/videos/mi-leccion.mp4")
+     Ver ONEDRIVE_VIDEOS.md para instrucciones detalladas.
      ======================================== */
 
   const COURSE = {
@@ -44,7 +36,7 @@
         category: "fundamentos",
         durationMin: 10,
         tags: ["intro", "ia", "conceptos"],
-        video: YT("1JcK6vFdv_Y"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_1"),
         explanation: `
           <p>La <strong>Inteligencia Artificial (IA)</strong> es como tener un asistente muy especializado: puede hacer tareas específicas increíblemente bien, pero no piensa como un humano.</p>
 
@@ -77,7 +69,7 @@
         category: "prompting",
         durationMin: 12,
         tags: ["prompt", "básico", "comunicación"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_2"),
         explanation: `
           <p>El <strong>prompting</strong> es el arte de comunicarte con la IA de manera clara y efectiva. Un buen prompt es como dar instrucciones precisas: mientras más específico seas, mejores resultados obtendrás.</p>
 
@@ -115,7 +107,7 @@
         category: "prompting",
         durationMin: 8,
         tags: ["whatsapp", "atención", "cliente"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_3"),
         explanation: `
           <p>Los <strong>prompts para atención al cliente</strong> te permiten automatizar respuestas coherentes, amables y útiles sin perder el toque humano.</p>
 
@@ -153,7 +145,7 @@
         category: "multimedia",
         durationMin: 10,
         tags: ["audio", "transcripción", "resumen"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_4"),
         explanation: `
           <p>La <strong>transcripción automática</strong> convierte audio a texto en segundos, y la IA puede luego resumir lo más importante, ahorrándote horas de trabajo manual.</p>
 
@@ -191,7 +183,7 @@
         category: "contenido",
         durationMin: 8,
         tags: ["redacción", "textos", "mejora"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_5"),
         explanation: `
           <p>La IA puede <strong>mejorar tu redacción</strong> corrigiendo errores, mejorando claridad, ajustando el tono y haciéndote sonar más profesional sin perder tu voz.</p>
 
@@ -229,7 +221,7 @@
         category: "fundamentos",
         durationMin: 12,
         tags: ["ml", "machine-learning", "no-code"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_6"),
         explanation: `
           <p>El <strong>Machine Learning (ML)</strong> permite que las computadoras aprendan patrones de datos. Y lo mejor: <em>ya no necesitas programar</em> para usarlo gracias a herramientas no-code.</p>
 
@@ -268,7 +260,7 @@
         category: "aplicaciones",
         durationMin: 14,
         tags: ["predicción", "demanda", "análisis"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_7"),
         explanation: `
           <p>La <strong>predicción de demanda</strong> usa datos históricos para anticipar cuánto venderás en el futuro, ayudándote a tomar mejores decisiones de inventario y producción.</p>
 
@@ -306,7 +298,7 @@
         category: "fundamentos",
         durationMin: 10,
         tags: ["métricas", "evaluación"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_8"),
         explanation: `
           <p>Las <strong>métricas</strong> te dicen qué tan bien funciona un modelo de IA. Son como el reporte de calificaciones de la escuela: números que indican el rendimiento.</p>
 
@@ -345,7 +337,7 @@
         category: "aplicaciones",
         durationMin: 12,
         tags: ["gráficas", "visualización", "datos"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_9"),
         explanation: `
           <p>La IA puede <strong>crear visualizaciones automáticas</strong> de tus datos, sugiriendo el mejor tipo de gráfica y destacando insights importantes sin que sepas diseño.</p>
 
@@ -383,7 +375,7 @@
         category: "multimedia",
         durationMin: 10,
         tags: ["imágenes", "visión", "descripción"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_10"),
         explanation: `
           <p>La <strong>visión por computadora</strong> permite que la IA "vea" y describa imágenes: identifica objetos, personas, textos, emociones y mucho más.</p>
 
@@ -422,7 +414,7 @@
         category: "aplicaciones",
         durationMin: 8,
         tags: ["productos", "catalogación"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_11"),
         explanation: `
           <p>La IA puede <strong>identificar productos similares</strong> aunque tengan nombres diferentes, conectando SKUs, códigos OEM y sinónimos automáticamente.</p>
 
@@ -461,7 +453,7 @@
         category: "multimedia",
         durationMin: 10,
         tags: ["fotos", "edición", "móvil"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_12"),
         explanation: `
           <p>La IA en apps móviles te permite <strong>editar fotos profesionalmente</strong> en segundos: eliminar fondos, mejorar calidad, aplicar estilos y más, sin ser diseñador.</p>
 
@@ -500,7 +492,7 @@
         category: "contenido",
         durationMin: 12,
         tags: ["video", "marketing", "contenido"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_13"),
         explanation: `
           <p>Los <strong>microvideos</strong> son el formato rey en redes sociales. La IA te ayuda a crearlos rápidamente: desde scripts hasta edición automática y subtítulos.</p>
 
@@ -539,7 +531,7 @@
         category: "fundamentos",
         durationMin: 10,
         tags: ["ética", "responsabilidad", "buenas-prácticas"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_14"),
         explanation: `
           <p>El <strong>uso responsable de IA</strong> implica entender sus limitaciones, sesgos potenciales y el impacto de tus decisiones automatizadas en personas reales.</p>
 
@@ -579,7 +571,7 @@
         category: "fundamentos",
         durationMin: 12,
         tags: ["sesgos", "verificación", "supervisión"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_15"),
         explanation: `
           <p>Los <strong>sesgos en IA</strong> ocurren cuando los modelos reflejan prejuicios presentes en sus datos de entrenamiento. La verificación humana es esencial para detectarlos y corregirlos.</p>
 
@@ -618,7 +610,7 @@
         category: "aplicaciones",
         durationMin: 8,
         tags: ["reuniones", "productividad"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_16"),
         explanation: `
           <p>Los <strong>asistentes de IA para reuniones</strong> transcriben, resumen, extraen tareas y documentan decisiones automáticamente mientras tú te enfocas en la conversación.</p>
 
@@ -657,7 +649,7 @@
         category: "fundamentos",
         durationMin: 14,
         tags: ["generativa", "tendencias", "actualidad"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_17"),
         explanation: `
           <p>La <strong>IA generativa</strong> crea contenido nuevo (texto, imágenes, audio, video, código) que antes solo humanos podían crear. Estamos en medio de una revolución creativa.</p>
 
@@ -698,7 +690,7 @@
         category: "fundamentos",
         durationMin: 12,
         tags: ["cuántica", "futuro"],
-        video: YT("aircAruvnKk"),
+        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_18"),
         explanation: `
           <p>La <strong>computación cuántica</strong> usa principios de física cuántica para resolver problemas que las computadoras tradicionales tardarían millones de años en resolver.</p>
 
