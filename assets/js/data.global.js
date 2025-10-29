@@ -1,7 +1,37 @@
 // Versión global para uso sin servidor (file://)
 // Expone window.COURSE
 (function () {
+  // Helper para videos de YouTube
   const YT = (id) => `https://www.youtube.com/embed/${id}`;
+
+  // Helper para videos de OneDrive
+  // Uso: ONEDRIVE("https://onedrive.live.com/embed?cid=ABC&resid=XYZ&authkey=DEF")
+  // O simplemente pasa la URL completa de embed de OneDrive
+  const ONEDRIVE = (url) => url;
+
+  // Helper para videos locales (MP4/WEBM)
+  // Uso: LOCAL("assets/videos/leccion-1.mp4")
+  const LOCAL = (path) => path;
+
+  /* ========================================
+     EJEMPLOS DE USO:
+
+     1. YouTube:
+        video: YT("aircAruvnKk")
+
+     2. OneDrive (Recomendado para tus propios videos):
+        video: ONEDRIVE("https://onedrive.live.com/embed?cid=ABC&resid=XYZ&authkey=DEF")
+
+        Para obtener la URL de OneDrive:
+        - Sube tu video a OneDrive
+        - Clic derecho → Insertar
+        - Copia solo la URL del atributo src del iframe
+        - O ve a ONEDRIVE_VIDEOS.md para instrucciones detalladas
+
+     3. Video local:
+        video: LOCAL("assets/videos/mi-leccion.mp4")
+     ======================================== */
+
   const COURSE = {
     id: "mini-ia",
     name: "Mini E-Learning IA",

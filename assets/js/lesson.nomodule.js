@@ -234,11 +234,21 @@
     const wrap=document.getElementById('video-wrapper');
     if(!wrap) return;
     const url=lesson.video||'';
+
+    // YouTube videos
     if(url.includes('youtube.com')||url.includes('youtu.be')){
       wrap.innerHTML=`<iframe src="${url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="${lesson.title}" style="width:100%;height:100%;border:0;"></iframe>`;
-    } else if(url.endsWith('.mp4')||url.endsWith('.webm')){
-      wrap.innerHTML=`<video controls src="${url}"></video>`;
-    } else {
+    }
+    // OneDrive videos
+    else if(url.includes('onedrive.live.com')||url.includes('1drv.ms')){
+      wrap.innerHTML=`<iframe src="${url}" frameborder="0" allowfullscreen title="${lesson.title}" style="width:100%;height:100%;border:0;"></iframe>`;
+    }
+    // Local videos (MP4/WEBM)
+    else if(url.endsWith('.mp4')||url.endsWith('.webm')){
+      wrap.innerHTML=`<video controls src="${url}" style="width:100%;height:100%;"></video>`;
+    }
+    // No video
+    else {
       wrap.innerHTML='<div class="row center" style="height:100%;justify-content:center;">Sin video definido</div>';
     }
   }
