@@ -36,7 +36,7 @@
         category: "fundamentos",
         durationMin: 10,
         tags: ["intro", "ia", "conceptos"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_1"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=e779a32e-f289-4277-86af-be14f8dcd024&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>La <strong>Inteligencia Artificial (IA)</strong> es como tener un asistente muy especializado: puede hacer tareas específicas increíblemente bien, pero no piensa como un humano.</p>
 
@@ -69,7 +69,7 @@
         category: "prompting",
         durationMin: 12,
         tags: ["prompt", "básico", "comunicación"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_2"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=64aa16c1-bba3-453b-9e8b-cd94de3a4aee&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>El <strong>prompting</strong> es el arte de comunicarte con la IA de manera clara y efectiva. Un buen prompt es como dar instrucciones precisas: mientras más específico seas, mejores resultados obtendrás.</p>
 
@@ -107,7 +107,7 @@
         category: "prompting",
         durationMin: 8,
         tags: ["whatsapp", "atención", "cliente"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_3"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=3f859022-d0f9-4c15-b99f-fdd4ccc486d9&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>Los <strong>prompts para atención al cliente</strong> te permiten automatizar respuestas coherentes, amables y útiles sin perder el toque humano.</p>
 
@@ -145,7 +145,7 @@
         category: "multimedia",
         durationMin: 10,
         tags: ["audio", "transcripción", "resumen"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_4"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=930de68e-3fb9-4580-aa07-5de419c97837&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>La <strong>transcripción automática</strong> convierte audio a texto en segundos, y la IA puede luego resumir lo más importante, ahorrándote horas de trabajo manual.</p>
 
@@ -183,7 +183,7 @@
         category: "contenido",
         durationMin: 8,
         tags: ["redacción", "textos", "mejora"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_5"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=7e11c7fa-acb4-4adf-9fb9-78a6d0d6a93b&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>La IA puede <strong>mejorar tu redacción</strong> corrigiendo errores, mejorando claridad, ajustando el tono y haciéndote sonar más profesional sin perder tu voz.</p>
 
@@ -221,7 +221,7 @@
         category: "fundamentos",
         durationMin: 12,
         tags: ["ml", "machine-learning", "no-code"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_6"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=c3755fe7-818b-4bdd-83e6-de111f63e5ad&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>El <strong>Machine Learning (ML)</strong> permite que las computadoras aprendan patrones de datos. Y lo mejor: <em>ya no necesitas programar</em> para usarlo gracias a herramientas no-code.</p>
 
@@ -260,7 +260,7 @@
         category: "aplicaciones",
         durationMin: 14,
         tags: ["predicción", "demanda", "análisis"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_7"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=5ad5d1b8-f3a0-4920-8ad7-b810ef180ffb&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>La <strong>predicción de demanda</strong> usa datos históricos para anticipar cuánto venderás en el futuro, ayudándote a tomar mejores decisiones de inventario y producción.</p>
 
@@ -298,7 +298,7 @@
         category: "fundamentos",
         durationMin: 10,
         tags: ["métricas", "evaluación"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_8"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=90b120e9-c429-4d95-9308-e9c94f66a5f5&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>Las <strong>métricas</strong> te dicen qué tan bien funciona un modelo de IA. Son como el reporte de calificaciones de la escuela: números que indican el rendimiento.</p>
 
@@ -337,7 +337,7 @@
         category: "aplicaciones",
         durationMin: 12,
         tags: ["gráficas", "visualización", "datos"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_9"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=b47407ed-6be5-485e-bf8b-ae8e6ec82808&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>La IA puede <strong>crear visualizaciones automáticas</strong> de tus datos, sugiriendo el mejor tipo de gráfica y destacando insights importantes sin que sepas diseño.</p>
 
@@ -375,7 +375,7 @@
         category: "multimedia",
         durationMin: 10,
         tags: ["imágenes", "visión", "descripción"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_10"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=571031eb-a501-4824-b1ab-0c5bb11cde82&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>La <strong>visión por computadora</strong> permite que la IA "vea" y describa imágenes: identifica objetos, personas, textos, emociones y mucho más.</p>
 
@@ -414,7 +414,7 @@
         category: "aplicaciones",
         durationMin: 8,
         tags: ["productos", "catalogación"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_11"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=9b32bd52-0fe8-4091-951c-5a2d3b7e3dc0&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>La IA puede <strong>identificar productos similares</strong> aunque tengan nombres diferentes, conectando SKUs, códigos OEM y sinónimos automáticamente.</p>
 
@@ -453,7 +453,7 @@
         category: "multimedia",
         durationMin: 10,
         tags: ["fotos", "edición", "móvil"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_12"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=cbe283b5-99bc-41a5-9360-5a7f81e3ebc2&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>La IA en apps móviles te permite <strong>editar fotos profesionalmente</strong> en segundos: eliminar fondos, mejorar calidad, aplicar estilos y más, sin ser diseñador.</p>
 
@@ -492,7 +492,7 @@
         category: "contenido",
         durationMin: 12,
         tags: ["video", "marketing", "contenido"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_13"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=b16f06ba-5bd8-478f-9547-67e341253ad5&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>Los <strong>microvideos</strong> son el formato rey en redes sociales. La IA te ayuda a crearlos rápidamente: desde scripts hasta edición automática y subtítulos.</p>
 
@@ -531,7 +531,7 @@
         category: "fundamentos",
         durationMin: 10,
         tags: ["ética", "responsabilidad", "buenas-prácticas"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_14"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=2c0e71e7-25ff-477c-9c05-a4207502e7c3&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>El <strong>uso responsable de IA</strong> implica entender sus limitaciones, sesgos potenciales y el impacto de tus decisiones automatizadas en personas reales.</p>
 
@@ -571,7 +571,7 @@
         category: "fundamentos",
         durationMin: 12,
         tags: ["sesgos", "verificación", "supervisión"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_15"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=442374f5-39cc-4934-a0c4-875c65d39063&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>Los <strong>sesgos en IA</strong> ocurren cuando los modelos reflejan prejuicios presentes en sus datos de entrenamiento. La verificación humana es esencial para detectarlos y corregirlos.</p>
 
@@ -610,7 +610,7 @@
         category: "aplicaciones",
         durationMin: 8,
         tags: ["reuniones", "productividad"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_16"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=f3a54b06-62e9-4231-89f7-145c1dfc8f06&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>Los <strong>asistentes de IA para reuniones</strong> transcriben, resumen, extraen tareas y documentan decisiones automáticamente mientras tú te enfocas en la conversación.</p>
 
@@ -649,7 +649,7 @@
         category: "fundamentos",
         durationMin: 14,
         tags: ["generativa", "tendencias", "actualidad"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_17"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=0b196b03-cb21-4da1-871d-8eb07c4cefa1&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>La <strong>IA generativa</strong> crea contenido nuevo (texto, imágenes, audio, video, código) que antes solo humanos podían crear. Estamos en medio de una revolución creativa.</p>
 
@@ -690,7 +690,7 @@
         category: "fundamentos",
         durationMin: 12,
         tags: ["cuántica", "futuro"],
-        video: ONEDRIVE("TU_URL_ONEDRIVE_LECCION_18"),
+        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=07b562c4-3276-420f-b749-b134f9c43e7c&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
         explanation: `
           <p>La <strong>computación cuántica</strong> usa principios de física cuántica para resolver problemas que las computadoras tradicionales tardarían millones de años en resolver.</p>
 

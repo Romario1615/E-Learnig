@@ -12,28 +12,115 @@
   function getLessonById(id){ const idx=COURSE.lessons.findIndex(l=>l.id===id); return { idx, lesson: COURSE.lessons[idx] }; }
   function renderExam(){
     const wrap=document.getElementById('video-wrapper'); if(!wrap) return; wrap.classList.add('exam-mode');
-    // Banco completo de preguntas
+    // Banco completo de preguntas (4 por cada lección = 72 total)
     const questionBank=[
+      // Lección 1: Qué es y qué no es IA
       { t:'¿Qué caracteriza a la IA débil?', o:['Tiene consciencia propia','Está diseñada para tareas específicas','Puede resolver cualquier problema','Tiene emociones reales'], a:1 },
+      { t:'La IA fuerte (o IA general):', o:['Ya existe y se usa diariamente','Todavía no existe','Es menos poderosa que la débil','Solo funciona en smartphones'], a:1 },
+      { t:'Un ejemplo de IA débil es:', o:['Un robot con consciencia','Sistema de reconocimiento facial','Una persona inteligente','Un cerebro humano artificial'], a:1 },
+      { t:'¿Qué puede hacer bien la IA actual?', o:['Tener emociones reales','Tareas específicas como traducir','Razonar como humanos','Tener conciencia propia'], a:1 },
+
+      // Lección 2: Prompting básico
       { t:'En prompting básico, ¿qué es lo más importante?', o:['Usar muchas palabras','Ser específico y claro','Usar emojis','Escribir en mayúsculas'], a:1 },
+      { t:'Un elemento clave de un buen prompt es:', o:['Ser ambiguo','Definir la tarea específica','Usar lenguaje complicado','Escribir poco'], a:1 },
+      { t:'¿Por qué es importante el contexto en un prompt?', o:['No es importante','Ayuda a la IA a entender mejor','Solo decora el mensaje','Confunde a la IA'], a:1 },
+      { t:'Un buen prompt debe incluir:', o:['Solo palabras técnicas','Contexto, tarea, formato y tono','Muchos emojis','Texto en mayúsculas'], a:1 },
+
+      // Lección 3: Prompts para WhatsApp/mostrador
       { t:'¿Para qué sirve un prompt en atención al cliente?', o:['Decorar mensajes','Automatizar respuestas coherentes','Enviar spam','Crear imágenes'], a:1 },
+      { t:'Al crear prompts de atención al cliente, debes:', o:['Ignorar el tono','Definir el rol y límites claros','Usar lenguaje informal siempre','No especificar nada'], a:1 },
+      { t:'Un prompt de atención debe establecer:', o:['Solo respuestas técnicas','Tono, límites y casos comunes','Respuestas agresivas','Información confidencial'], a:1 },
+      { t:'¿Qué debe hacer la IA si no sabe una respuesta?', o:['Inventar información','Derivar al equipo humano','Ignorar al cliente','Cerrar la conversación'], a:1 },
+
+      // Lección 4: Transcripción y resumen de audios
       { t:'La transcripción de audio convierte:', o:['Audio a texto','Texto a audio','Imágenes a video','Video a imágenes'], a:0 },
+      { t:'¿Qué ventaja ofrece la transcripción automática?', o:['Es más cara','Ahorra horas de trabajo manual','Solo funciona en inglés','Requiere equipos especiales'], a:1 },
+      { t:'La IA puede usar transcripciones para:', o:['Solo guardarlas','Generar resúmenes automáticos','Borrar el audio','Traducir a emojis'], a:1 },
+      { t:'Un caso de uso de transcripción es:', o:['Lavar ropa','Documentar reuniones importantes','Cocinar','Hacer ejercicio'], a:1 },
+
+      // Lección 5: Mejora de redacción
       { t:'¿Qué puede hacer la IA en mejora de redacción?', o:['Solo corregir ortografía','Mejorar estilo y claridad','Eliminar todo el texto','Traducir a emojis'], a:1 },
+      { t:'La IA puede ajustar el tono de un texto para:', o:['Confundir al lector','Adaptarlo a la audiencia','Hacerlo ilegible','Agregar errores'], a:1 },
+      { t:'¿Quién debe tomar la decisión final sobre el texto?', o:['Solo la IA','El usuario humano','Nadie','Un programa automático'], a:1 },
+      { t:'La IA ayuda en redacción al:', o:['Escribir todo por ti','Sugerir mejoras de claridad','Borrar tus ideas','Complicar el texto'], a:1 },
+
+      // Lección 6: ML sin programación (conceptos)
       { t:'ML sin programación se refiere a:', o:['No usar computadoras','Herramientas no-code para ML','Machine Learning manual','Escribir código a mano'], a:1 },
+      { t:'En ML, el entrenamiento significa:', o:['Ejercicio físico','Mostrar ejemplos al modelo','Borrar datos','Apagar la computadora'], a:1 },
+      { t:'¿Qué es un dataset en ML?', o:['Un juego de datos','Conjunto de datos para entrenar','Una computadora','Un tipo de robot'], a:1 },
+      { t:'La precisión de un modelo indica:', o:['Su tamaño','Qué tan seguido acierta','Su color','Su precio'], a:1 },
+
+      // Lección 7: Predicción de demanda
       { t:'¿Qué permite la predicción de demanda?', o:['Adivinar el futuro','Anticipar tendencias de ventas','Crear productos','Borrar datos'], a:1 },
+      { t:'La predicción de demanda usa:', o:['Magia','Datos históricos y patrones','Solo intuición','Números aleatorios'], a:1 },
+      { t:'Un beneficio de predecir demanda es:', o:['Aumentar costos','Reducir quiebres de stock','Complicar inventario','Vender menos'], a:1 },
+      { t:'¿Qué puede detectar la IA en predicción?', o:['Solo números','Patrones de temporalidad','Colores','Sonidos'], a:1 },
+
+      // Lección 8: Métricas simples
       { t:'Las métricas en IA sirven para:', o:['Decorar reportes','Evaluar rendimiento de modelos','Aumentar costos','Complicar procesos'], a:1 },
+      { t:'¿Qué mide la accuracy (precisión)?', o:['El tamaño del modelo','% de predicciones correctas','La velocidad','El color'], a:1 },
+      { t:'El F1-Score es útil cuando:', o:['No importa nada','Hay desbalance en los datos','Sobran recursos','Solo hay un dato'], a:1 },
+      { t:'¿Por qué 95% de precisión puede ser engañoso?', o:['Nunca lo es','Depende del contexto y balance de datos','Siempre es perfecto','Es un número mágico'], a:1 },
+
+      // Lección 9: Gráficas desde planillas
       { t:'¿Qué ventaja tiene generar gráficas con IA?', o:['Son más coloridas','Automatiza la visualización de datos','Usa más papel','Solo funciona en tablets'], a:1 },
+      { t:'La IA puede sugerir:', o:['Solo colores','El mejor tipo de gráfica para tus datos','Números aleatorios','Borrar datos'], a:1 },
+      { t:'Un dashboard es:', o:['Un tablero de auto','Panel con múltiples visualizaciones','Una aplicación de música','Un tipo de gráfica'], a:1 },
+      { t:'¿Qué puede detectar la IA en datos?', o:['Solo errores','Correlaciones y anomalías','Colores','Sentimientos'], a:1 },
+
+      // Lección 10: Descripción desde imagen
       { t:'La descripción desde imagen usa:', o:['Modelos de visión por computadora','Solo texto','Audífonos','Teclados especiales'], a:0 },
+      { t:'La visión por computadora permite:', o:['Mejorar la vista humana','Que la IA identifique objetos en imágenes','Crear anteojos','Limpiar pantallas'], a:1 },
+      { t:'Un caso de uso de visión IA es:', o:['Cocinar','Generar descripciones de productos','Planchar','Conducir sin auto'], a:1 },
+      { t:'OCR significa:', o:['Ordenar Colores Rápido','Reconocimiento óptico de caracteres','Optimizar Computadoras Rápidas','Organizar Código Real'], a:1 },
+
+      // Lección 11: SKU/OEM y sinonimia
       { t:'SKU/OEM se relaciona con:', o:['Códigos de productos','Recetas de cocina','Música','Deportes'], a:0 },
+      { t:'La IA puede identificar productos aunque:', o:['Sean invisibles','Tengan nombres diferentes','No existan','Sean líquidos'], a:1 },
+      { t:'Sinonimia se refiere a:', o:['Palabras inventadas','Palabras diferentes con mismo significado','Códigos secretos','Números primos'], a:1 },
+      { t:'¿Para qué sirve unificar catálogos?', o:['Complicar ventas','Evitar duplicados de productos','Aumentar precios','Borrar información'], a:1 },
+
+      // Lección 12: Edición rápida de fotos (móvil)
       { t:'¿Qué permiten las herramientas de edición de fotos con IA?', o:['Solo filtros básicos','Mejoras automáticas inteligentes','Borrar la cámara','Imprimir en 3D'], a:1 },
+      { t:'La IA puede eliminar fondos:', o:['Solo en computadoras grandes','Automáticamente desde móvil','Nunca','Solo con Photoshop'], a:1 },
+      { t:'Upscaling con IA significa:', o:['Subir escaleras','Aumentar resolución manteniendo calidad','Bajar calidad','Borrar imágenes'], a:1 },
+      { t:'¿Qué puedes hacer con fotos desde tu móvil?', o:['Solo verlas','Crear fotos profesionales para e-commerce','Nada','Solo borrarlas'], a:1 },
+
+      // Lección 13: Microvideos promocionales
       { t:'Los microvideos promocionales suelen durar:', o:['2 horas','30-45 segundos','10 minutos','Todo el día'], a:1 },
+      { t:'La IA puede ayudar a crear videos con:', o:['Solo ideas','Scripts, edición y subtítulos automáticos','Cámaras físicas','Actores reales'], a:1 },
+      { t:'El hook de un video es:', o:['Un anzuelo de pesca','Los primeros 3 segundos para captar atención','El final','La música de fondo'], a:1 },
+      { t:'Plataformas ideales para microvideos son:', o:['Solo televisión','TikTok, Instagram Reels, YouTube Shorts','Radio','Periódicos'], a:1 },
+
+      // Lección 14: Uso responsable de IA
       { t:'El uso responsable de IA implica:', o:['Usarla sin límites','Considerar ética y sesgos','Ignorar consecuencias','Solo pensar en ganancias'], a:1 },
+      { t:'¿Qué principio es clave en IA responsable?', o:['Ocultar que se usa IA','Transparencia e informar su uso','Mentir sobre resultados','Ignorar errores'], a:1 },
+      { t:'En decisiones que afectan personas debes:', o:['Confiar solo en IA','Incluir revisión humana','Automatizar todo','Ignorar impactos'], a:1 },
+      { t:'¿Qué debes hacer antes de usar resultados de IA?', o:['Publicarlos inmediatamente','Verificarlos y revisarlos','Ignorarlos','Borrarlos'], a:1 },
+
+      // Lección 15: Sesgos y verificación humana
       { t:'¿Por qué es importante la verificación humana?', o:['Es innecesaria','La IA puede tener sesgos y errores','Solo para perder tiempo','Para complicar procesos'], a:1 },
-      { t:'Los asistentes para reuniones pueden:', o:['Solo tomar fotos','Transcribir y resumir reuniones','Preparar café','Limpiar la sala'], a:1 },
-      { t:'La IA generativa puede crear:', o:['Solo números','Texto, imágenes, audio y video','Solo emails','Únicamente código'], a:1 },
-      { t:'¿Qué es la computación cuántica?', o:['Computadoras muy pequeñas','Procesamiento basado en qubits','Internet rápido','Un videojuego'], a:1 },
       { t:'Un sesgo en IA es:', o:['Un error de hardware','Preferencia injusta en los datos o modelo','Un tipo de computadora','Una métrica de velocidad'], a:1 },
-      { t:'¿Cuál es un riesgo del uso de IA?', o:['Ahorro de tiempo','Perpetuar sesgos existentes','Mejorar eficiencia','Automatizar tareas'], a:1 },
+      { t:'¿De dónde provienen los sesgos en IA?', o:['De la electricidad','De datos de entrenamiento no representativos','Del color de la computadora','De la marca'], a:1 },
+      { t:'Human-in-the-loop significa:', o:['Personas en círculo','Humanos supervisan y validan decisiones de IA','Solo robots','Computadoras solas'], a:1 },
+
+      // Lección 16: Asistentes para reuniones
+      { t:'Los asistentes para reuniones pueden:', o:['Solo tomar fotos','Transcribir y resumir reuniones','Preparar café','Limpiar la sala'], a:1 },
+      { t:'¿Qué extraen automáticamente estos asistentes?', o:['Café','Tareas y decisiones','Papeles','Sillas'], a:1 },
+      { t:'Action items son:', o:['Acciones de película','Tareas específicas asignadas en reunión','Juegos','Deportes'], a:1 },
+      { t:'¿Cuánto tiempo ahorran en documentación?', o:['Ninguno','De 30 minutos a 2 minutos por reunión','Horas extra','Todo el día'], a:1 },
+
+      // Lección 17: IA generativa hoy
+      { t:'La IA generativa puede crear:', o:['Solo números','Texto, imágenes, audio y video','Solo emails','Únicamente código'], a:1 },
+      { t:'¿Qué es un LLM?', o:['Un juego','Modelo de lenguaje masivo','Una computadora pequeña','Un robot'], a:1 },
+      { t:'Modelos multimodales combinan:', o:['Solo texto','Texto, imagen, audio en un sistema','Solo imágenes','Solo números'], a:1 },
+      { t:'La IA generativa es útil para:', o:['Solo borrar archivos','Crear contenido original nuevo','Hacer café','Limpiar pantallas'], a:1 },
+
+      // Lección 18: Computación cuántica
+      { t:'¿Qué es la computación cuántica?', o:['Computadoras muy pequeñas','Procesamiento basado en qubits','Internet rápido','Un videojuego'], a:1 },
+      { t:'Un qubit puede estar:', o:['Solo en 0','Solo en 1','En 0 y 1 simultáneamente','Apagado siempre'], a:2 },
+      { t:'La computación cuántica explorará:', o:['Solo un camino','Múltiples caminos simultáneamente','Ningún camino','Caminos pasados'], a:1 },
+      { t:'¿Cuál es el estado actual de computación cuántica?', o:['Tecnología madura y común','En etapas tempranas de desarrollo','No existe','Solo en ciencia ficción'], a:1 },
     ];
     // Seleccionar 10 preguntas aleatorias
     const shuffled = questionBank.sort(() => Math.random() - 0.5);
@@ -158,7 +245,7 @@
       if (!result.pass) status.textContent += ' • No aprobado, vuelve a intentarlo';
     });
 
-    wrap.querySelector('#btn-show-cert').addEventListener('click',(e)=>{
+    wrap.querySelector('#btn-show-cert').addEventListener('click', async (e)=>{
       e.preventDefault(); const name=(wrap.querySelector('#exam-name').value||'').trim(); if(!name){ alert('Escribe tu nombre completo'); return; }
       const { usedSec, pct } = grade(false); if (pct < 70) { alert('No aprobado, vuelve a intentarlo.'); return; }
       const d=new Date();
@@ -169,9 +256,9 @@
       const practiceMins = contentLessons.length * 10;
       const baseSec = (videoMins + practiceMins) * 60;
       const totalSec = baseSec + usedSec;
-      const dataURL = buildCertificatePNG({
+      const dataURL = await buildCertificatePNG({
         name,
-        institute: 'AI Learning Institute',
+        institute: 'Instituto Tecnológico Superior Japón',
         course: 'Introducción práctica a la Inteligencia Artificial',
         usedSec: totalSec,
         date: d,
@@ -197,35 +284,149 @@
       return h.toString(16).toUpperCase().padStart(8,'0');
     }
 
-    function buildCertificatePNG({ name, institute, course, usedSec, date, code, score }){
+    async function buildCertificatePNG({ name, institute, course, usedSec, date, code, score }){
       const W = 1400, H = 900; const canvas = document.createElement('canvas'); canvas.width=W; canvas.height=H; const ctx = canvas.getContext('2d');
-      // Background
-      ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,W,H);
-      // Frame
-      ctx.strokeStyle = '#1f3b5a'; ctx.lineWidth = 8; ctx.strokeRect(30,30,W-60,H-60);
-      // Logo circle
-      const cx=120, cy=120, r=70; const grad = ctx.createLinearGradient(cx-r, cy-r, cx+r, cy+r); grad.addColorStop(0,'#00e5ff'); grad.addColorStop(1,'#00ffa3'); ctx.fillStyle=grad; ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.fill();
-      ctx.fillStyle = '#00121a'; ctx.font = 'bold 46px Arial'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText('AI', cx, cy+4);
-      // Institute
-      ctx.fillStyle = '#0b0f14'; ctx.textAlign='left'; ctx.textBaseline='alphabetic'; ctx.font='700 42px Arial'; ctx.fillText(institute, 220, 120);
-      // Title
-      ctx.font='700 64px Arial'; ctx.textAlign='center'; ctx.fillText('Certificado de Finalización', W/2, 260);
-      // Texts
-      ctx.font='400 28px Arial'; ctx.fillStyle='#333'; ctx.fillText('Se certifica que', W/2, 320);
-      ctx.font='800 46px Arial'; ctx.fillStyle='#000'; ctx.fillText(name, W/2, 380);
-      ctx.font='400 28px Arial'; ctx.fillStyle='#333'; ctx.fillText('ha completado satisfactoriamente el curso', W/2, 430);
-      ctx.font='600 32px Arial'; ctx.fillStyle='#0b0f14'; ctx.fillText(course, W/2, 475);
-      // Score
-      const nivel = score >= 90 ? 'Excelente' : score >= 80 ? 'Muy Bueno' : 'Aprobado';
-      ctx.font='600 26px Arial'; ctx.fillStyle='#00a56b'; ctx.fillText(`Calificación: ${score}% - ${nivel}`, W/2, 520);
-      // Meta (horas y minutos)
-      const totalMin = Math.floor(usedSec/60); const hh = Math.floor(totalMin/60); const mm = totalMin%60;
+
+      // Background - Gradiente moderno
+      const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+      bgGrad.addColorStop(0, '#0a0e27');
+      bgGrad.addColorStop(1, '#1a1f3a');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, W, H);
+
+      // Elementos geométricos decorativos
+      ctx.globalAlpha = 0.1;
+      // Círculo superior derecha
+      const circGrad1 = ctx.createRadialGradient(W-100, 100, 0, W-100, 100, 300);
+      circGrad1.addColorStop(0, '#00e5ff');
+      circGrad1.addColorStop(1, 'transparent');
+      ctx.fillStyle = circGrad1;
+      ctx.fillRect(0, 0, W, H);
+
+      // Círculo inferior izquierda
+      const circGrad2 = ctx.createRadialGradient(100, H-100, 0, 100, H-100, 300);
+      circGrad2.addColorStop(0, '#2563eb');
+      circGrad2.addColorStop(1, 'transparent');
+      ctx.fillStyle = circGrad2;
+      ctx.fillRect(0, 0, W, H);
+      ctx.globalAlpha = 1.0;
+
+      // Panel central con glassmorphism
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+      ctx.lineWidth = 2;
+      const panelPadding = 80;
+      ctx.fillRect(panelPadding, panelPadding, W - panelPadding*2, H - panelPadding*2);
+      ctx.strokeRect(panelPadding, panelPadding, W - panelPadding*2, H - panelPadding*2);
+
+      // Línea decorativa superior con gradiente
+      const lineGrad = ctx.createLinearGradient(150, 130, W-150, 130);
+      lineGrad.addColorStop(0, 'transparent');
+      lineGrad.addColorStop(0.2, '#00e5ff');
+      lineGrad.addColorStop(0.5, '#00ffa3');
+      lineGrad.addColorStop(0.8, '#2563eb');
+      lineGrad.addColorStop(1, 'transparent');
+      ctx.strokeStyle = lineGrad;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(150, 130);
+      ctx.lineTo(W-150, 130);
+      ctx.stroke();
+
+      // Institute - Header
+      ctx.fillStyle = '#e8edf4';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'alphabetic';
+      ctx.font = '600 24px Arial, sans-serif';
+      ctx.fillText(institute, W/2, 110);
+
+      // Title con gradiente
+      ctx.font = '800 70px Arial, sans-serif';
+      const titleGrad = ctx.createLinearGradient(W/2 - 400, 200, W/2 + 400, 200);
+      titleGrad.addColorStop(0, '#00e5ff');
+      titleGrad.addColorStop(0.5, '#00ffa3');
+      titleGrad.addColorStop(1, '#00e5ff');
+      ctx.fillStyle = titleGrad;
+      ctx.fillText('CERTIFICADO DE', W/2, 200);
+      ctx.fillText('PARTICIPACIÓN', W/2, 270);
+
+      // Línea decorativa inferior del título
+      ctx.strokeStyle = lineGrad;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(W/2 - 300, 290);
+      ctx.lineTo(W/2 + 300, 290);
+      ctx.stroke();
+
+      // Texto "Se certifica que"
+      ctx.font = '400 26px Arial, sans-serif';
+      ctx.fillStyle = '#9aa5b8';
+      ctx.fillText('Se certifica que', W/2, 360);
+
+      // Nombre del participante - Destacado
+      ctx.font = '800 56px Arial, sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(name.toUpperCase(), W/2, 440);
+
+      // Línea bajo el nombre
+      ctx.strokeStyle = 'rgba(0, 229, 255, 0.5)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(W/2 - 350, 460);
+      ctx.lineTo(W/2 + 350, 460);
+      ctx.stroke();
+
+      // Texto participación
+      ctx.font = '400 26px Arial, sans-serif';
+      ctx.fillStyle = '#9aa5b8';
+      ctx.fillText('ha participado exitosamente en el curso', W/2, 520);
+
+      // Nombre del curso
+      ctx.font = '700 38px Arial, sans-serif';
+      ctx.fillStyle = '#e8edf4';
+      ctx.fillText(course, W/2, 580);
+
+      // Box con detalles
+      ctx.fillStyle = 'rgba(37, 99, 235, 0.1)';
+      ctx.strokeStyle = 'rgba(37, 99, 235, 0.3)';
+      ctx.lineWidth = 2;
+      const boxY = 620;
+      const boxH = 80;
+      ctx.fillRect(200, boxY, W-400, boxH);
+      ctx.strokeRect(200, boxY, W-400, boxH);
+
+      // Tiempo de dedicación
+      const totalMin = Math.floor(usedSec/60);
+      const hh = Math.floor(totalMin/60);
+      const mm = totalMin%60;
       const timeStr = hh ? `${hh}h ${String(mm).padStart(2,'0')}m` : `${mm}m`;
-      ctx.font='400 24px Arial'; ctx.fillStyle='#444'; ctx.fillText(`Tiempo invertido: ${timeStr}`, W/2, 560);
+      ctx.font = '600 24px Arial, sans-serif';
+      ctx.fillStyle = '#00ffa3';
+      ctx.fillText(`⏱ Tiempo de dedicación: ${timeStr}`, W/2, boxY + 50);
+
       // Footer
-      ctx.font='700 26px Arial'; ctx.fillStyle='#00a56b'; ctx.fillText('Emitido por: AI Learning', W/2, 620);
-      ctx.font='400 22px Arial'; ctx.fillStyle='#555'; ctx.fillText(`Código: ${code}`, W/2, 660);
-      ctx.fillText(date.toLocaleDateString('es-ES',{year:'numeric',month:'long',day:'numeric'}), W/2, 690);
+      ctx.font = '700 26px Arial, sans-serif';
+      ctx.fillStyle = '#00e5ff';
+      ctx.fillText('AI LEARNING', W/2, 760);
+
+      // Código y fecha
+      ctx.font = '400 20px Arial, sans-serif';
+      ctx.fillStyle = '#6b7a8f';
+      ctx.fillText(`Código: ${code}`, W/2, 800);
+      ctx.fillText(date.toLocaleDateString('es-ES', {year:'numeric', month:'long', day:'numeric'}), W/2, 830);
+
+      // Puntos decorativos en las esquinas
+      const drawCornerDot = (x, y) => {
+        ctx.fillStyle = '#00e5ff';
+        ctx.beginPath();
+        ctx.arc(x, y, 6, 0, Math.PI * 2);
+        ctx.fill();
+      };
+      drawCornerDot(panelPadding + 20, panelPadding + 20);
+      drawCornerDot(W - panelPadding - 20, panelPadding + 20);
+      drawCornerDot(panelPadding + 20, H - panelPadding - 20);
+      drawCornerDot(W - panelPadding - 20, H - panelPadding - 20);
+
       return canvas.toDataURL('image/png');
     }
   }
