@@ -430,14 +430,286 @@
       return canvas.toDataURL('image/png');
     }
   }
+
+  // Configurar controles personalizados para videos de Dropbox
+  function setupCustomVideoControls(wrapper, lesson){
+    const video = wrapper.querySelector('video');
+    if(!video) return;
+
+    const playBig = wrapper.querySelector('.video-play-big');
+    const playBtn = wrapper.querySelector('[data-action="play"]');
+    const playIcon = playBtn.querySelector('.play-icon');
+    const pauseIcon = playBtn.querySelector('.pause-icon');
+    const progressBar = wrapper.querySelector('.video-progress-bar');
+    const progressFill = wrapper.querySelector('.video-progress-fill');
+    const progressBuffered = wrapper.querySelector('.video-progress-buffered');
+    const progressTooltip = wrapper.querySelector('.video-time-tooltip');
+    const timeCurrent = wrapper.querySelector('.video-time-current');
+    const timeDuration = wrapper.querySelector('.video-time-duration');
+    const muteBtn = wrapper.querySelector('[data-action="mute"]');
+    const volumeIcon = muteBtn.querySelector('.volume-icon');
+    const mutedIcon = muteBtn.querySelector('.muted-icon');
+    const volumeSlider = wrapper.querySelector('.video-volume-slider');
+    const volumeFill = wrapper.querySelector('.video-volume-fill');
+    const speedBtn = wrapper.querySelector('[data-action="speed"]');
+    const speedMenu = wrapper.querySelector('.video-speed-menu');
+    const speedOptions = speedMenu.querySelectorAll('.video-speed-option');
+    const fullscreenBtn = wrapper.querySelector('[data-action="fullscreen"]');
+    const fullscreenIcon = fullscreenBtn.querySelector('.fullscreen-icon');
+    const fullscreenExitIcon = fullscreenBtn.querySelector('.fullscreen-exit-icon');
+
+    let hideControlsTimeout;
+
+    const formatTime = (sec) => {
+      if(isNaN(sec)) return '0:00';
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2, '0')}`;
+    };
+
+    const togglePlay = () => {
+      if(video.paused) video.play();
+      else video.pause();
+    };
+
+    const updatePlayState = () => {
+      if(video.paused) {
+        wrapper.classList.add('paused');
+        playIcon.style.display = '';
+        pauseIcon.style.display = 'none';
+      } else {
+        wrapper.classList.remove('paused');
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = '';
+      }
+    };
+
+    const updateProgress = () => {
+      const percent = (video.currentTime / video.duration) * 100 || 0;
+      progressFill.style.width = `${percent}%`;
+      timeCurrent.textContent = formatTime(video.currentTime);
+    };
+
+    const updateBuffered = () => {
+      if(video.buffered.length > 0) {
+        const buffered = video.buffered.end(video.buffered.length - 1);
+        const percent = (buffered / video.duration) * 100 || 0;
+        progressBuffered.style.width = `${percent}%`;
+      }
+    };
+
+    const seekToPosition = (e) => {
+      const rect = progressBar.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      video.currentTime = pos * video.duration;
+    };
+
+    const showTimeTooltip = (e) => {
+      const rect = progressBar.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      const time = pos * video.duration;
+      progressTooltip.textContent = formatTime(time);
+      progressTooltip.style.left = `${pos * 100}%`;
+    };
+
+    const toggleMute = () => {
+      video.muted = !video.muted;
+      updateVolumeUI();
+    };
+
+    const updateVolumeUI = () => {
+      if(video.muted || video.volume === 0) {
+        volumeIcon.style.display = 'none';
+        mutedIcon.style.display = '';
+        volumeFill.style.width = '0%';
+      } else {
+        volumeIcon.style.display = '';
+        mutedIcon.style.display = 'none';
+        volumeFill.style.width = `${video.volume * 100}%`;
+      }
+    };
+
+    const changeVolume = (e) => {
+      const rect = volumeSlider.getBoundingClientRect();
+      const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      video.volume = pos;
+      video.muted = false;
+      updateVolumeUI();
+    };
+
+    const toggleSpeedMenu = () => {
+      speedMenu.classList.toggle('active');
+    };
+
+    const changeSpeed = (speed) => {
+      video.playbackRate = speed;
+      speedOptions.forEach(opt => {
+        opt.classList.toggle('active', parseFloat(opt.dataset.speed) === speed);
+      });
+      speedMenu.classList.remove('active');
+    };
+
+    const toggleFullscreen = () => {
+      if(!document.fullscreenElement) {
+        wrapper.requestFullscreen().catch(err => console.error('Error fullscreen:', err));
+      } else {
+        document.exitFullscreen();
+      }
+    };
+
+    const updateFullscreenUI = () => {
+      if(document.fullscreenElement) {
+        fullscreenIcon.style.display = 'none';
+        fullscreenExitIcon.style.display = '';
+      } else {
+        fullscreenIcon.style.display = '';
+        fullscreenExitIcon.style.display = 'none';
+      }
+    };
+
+    const showControls = () => {
+      wrapper.classList.add('show-controls');
+      clearTimeout(hideControlsTimeout);
+      if(!video.paused) {
+        hideControlsTimeout = setTimeout(() => {
+          wrapper.classList.remove('show-controls');
+        }, 3000);
+      }
+    };
+
+    video.addEventListener('loadedmetadata', () => {
+      timeDuration.textContent = formatTime(video.duration);
+      wrapper.classList.remove('loading');
+    });
+    video.addEventListener('play', updatePlayState);
+    video.addEventListener('pause', updatePlayState);
+    video.addEventListener('timeupdate', updateProgress);
+    video.addEventListener('progress', updateBuffered);
+    video.addEventListener('waiting', () => wrapper.classList.add('loading'));
+    video.addEventListener('canplay', () => wrapper.classList.remove('loading'));
+    video.addEventListener('volumechange', updateVolumeUI);
+
+    video.addEventListener('click', togglePlay);
+    playBig.addEventListener('click', togglePlay);
+    playBtn.addEventListener('click', togglePlay);
+
+    progressBar.addEventListener('click', seekToPosition);
+    progressBar.addEventListener('mousemove', showTimeTooltip);
+
+    muteBtn.addEventListener('click', toggleMute);
+    volumeSlider.addEventListener('click', changeVolume);
+
+    speedBtn.addEventListener('click', toggleSpeedMenu);
+    speedOptions.forEach(opt => {
+      opt.addEventListener('click', () => changeSpeed(parseFloat(opt.dataset.speed)));
+    });
+
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    document.addEventListener('fullscreenchange', updateFullscreenUI);
+
+    wrapper.addEventListener('mousemove', showControls);
+    wrapper.addEventListener('mouseleave', () => {
+      if(!video.paused) wrapper.classList.remove('show-controls');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      switch(e.key) {
+        case ' ':
+        case 'k':
+          e.preventDefault();
+          togglePlay();
+          break;
+        case 'ArrowLeft':
+          e.preventDefault();
+          video.currentTime = Math.max(0, video.currentTime - 5);
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          video.currentTime = Math.min(video.duration, video.currentTime + 5);
+          break;
+        case 'm':
+          e.preventDefault();
+          toggleMute();
+          break;
+        case 'f':
+          e.preventDefault();
+          toggleFullscreen();
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          video.volume = Math.min(1, video.volume + 0.1);
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          video.volume = Math.max(0, video.volume - 0.1);
+          break;
+      }
+    });
+
+    updateVolumeUI();
+    updatePlayState();
+  }
+
   function renderPlayer(lesson){
     if(lesson && lesson.exam){ renderExam(); return; }
     const wrap=document.getElementById('video-wrapper');
     if(!wrap) return;
     const url=lesson.video||'';
 
+    // Dropbox videos (con controles personalizados)
+    if(url.includes('dropbox.com') && url.includes('raw=1')){
+      wrap.classList.add('custom-controls', 'paused');
+      wrap.innerHTML=`
+        <video src="${url}" preload="metadata"></video>
+        <div class="video-loading-spinner"></div>
+        <button class="video-play-big" aria-label="Reproducir"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="custom-video-controls">
+          <div class="video-progress-bar">
+            <div class="video-progress-buffered"></div>
+            <div class="video-progress-fill"><div class="video-progress-thumb"></div></div>
+            <div class="video-time-tooltip">0:00</div>
+          </div>
+          <div class="video-controls-bottom">
+            <div class="video-controls-left">
+              <button class="video-btn video-btn-play" data-action="play" aria-label="Reproducir">
+                <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon" viewBox="0 0 24 24" style="display:none;"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+              </button>
+              <span class="video-time"><span class="video-time-current">0:00</span> / <span class="video-time-duration">0:00</span></span>
+            </div>
+            <div class="video-controls-right">
+              <div class="video-volume-container">
+                <button class="video-btn" data-action="mute" aria-label="Silenciar">
+                  <svg class="volume-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                  <svg class="muted-icon" viewBox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                </button>
+                <div class="video-volume-slider"><div class="video-volume-fill" style="width:100%;"></div></div>
+              </div>
+              <div style="position:relative;">
+                <button class="video-btn" data-action="speed" aria-label="Velocidad"><svg viewBox="0 0 24 24"><path d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z"/><path d="M10.59 15.41a2 2 0 0 0 2.83 0l5.66-8.49-8.49 5.66a2 2 0 0 0 0 2.83z"/></svg></button>
+                <div class="video-speed-menu">
+                  <button class="video-speed-option" data-speed="0.5">0.5x</button>
+                  <button class="video-speed-option" data-speed="0.75">0.75x</button>
+                  <button class="video-speed-option active" data-speed="1">Normal</button>
+                  <button class="video-speed-option" data-speed="1.25">1.25x</button>
+                  <button class="video-speed-option" data-speed="1.5">1.5x</button>
+                  <button class="video-speed-option" data-speed="2">2x</button>
+                </div>
+              </div>
+              <button class="video-btn" data-action="fullscreen" aria-label="Pantalla completa">
+                <svg class="fullscreen-icon" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                <svg class="fullscreen-exit-icon" viewBox="0 0 24 24" style="display:none;"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      setTimeout(() => setupCustomVideoControls(wrap, lesson), 0);
+    }
     // YouTube videos
-    if(url.includes('youtube.com')||url.includes('youtu.be')){
+    else if(url.includes('youtube.com')||url.includes('youtu.be')){
+      wrap.classList.remove('custom-controls', 'paused');
       wrap.innerHTML=`<iframe src="${url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="${lesson.title}" style="width:100%;height:100%;border:0;"></iframe>`;
     }
     // OneDrive videos

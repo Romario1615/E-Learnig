@@ -1,6 +1,18 @@
 // Versión global para uso sin servidor (file://)
 // Expone window.COURSE
 (function () {
+  // Helper para videos de Dropbox (CON CONTROLES PERSONALIZADOS)
+  // Uso: DROPBOX("https://www.dropbox.com/scl/fi/abc123/video.mp4?rlkey=xyz&dl=0")
+  // Automáticamente convierte dl=0 a raw=1 para streaming directo
+  const DROPBOX = (url) => {
+    if(url.includes('?dl=0')) return url.replace('?dl=0', '?raw=1');
+    if(url.includes('&dl=0')) return url.replace('&dl=0', '&raw=1');
+    if(!url.includes('raw=1') && url.includes('dropbox.com')) {
+      return url + (url.includes('?') ? '&raw=1' : '?raw=1');
+    }
+    return url;
+  };
+
   // Helper para videos de OneDrive
   // Uso: ONEDRIVE("https://onedrive.live.com/embed?cid=ABC&resid=XYZ&authkey=DEF")
   const ONEDRIVE = (url) => url;
@@ -36,7 +48,7 @@
         category: "fundamentos",
         durationMin: 10,
         tags: ["intro", "ia", "conceptos"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=e779a32e-f289-4277-86af-be14f8dcd024&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/wfotci1x3lwmwrvqm4eht/L01.-Qu-es-y-qu-no-es-IA.mkv?rlkey=or0zd9oy5pa3wsqisesua47qr&st=spd3dg4z&dl=0"),
         explanation: `
           <p>La <strong>Inteligencia Artificial (IA)</strong> es como tener un asistente muy especializado: puede hacer tareas específicas increíblemente bien, pero no piensa como un humano.</p>
 
@@ -69,7 +81,7 @@
         category: "prompting",
         durationMin: 12,
         tags: ["prompt", "básico", "comunicación"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=64aa16c1-bba3-453b-9e8b-cd94de3a4aee&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/wmr68v3xb1616q15qvy6j/L02.-Prompting-b-sico.mkv?rlkey=2df1tn4p1gzebzdkqw12ns9kd&st=avq8keno&dl=0"),
         explanation: `
           <p>El <strong>prompting</strong> es el arte de comunicarte con la IA de manera clara y efectiva. Un buen prompt es como dar instrucciones precisas: mientras más específico seas, mejores resultados obtendrás.</p>
 
@@ -107,7 +119,7 @@
         category: "prompting",
         durationMin: 8,
         tags: ["whatsapp", "atención", "cliente"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=3f859022-d0f9-4c15-b99f-fdd4ccc486d9&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/14dt521c18xpv0gqenz6q/L03.-Prompts-para-WhatsApp-mostrador.mkv?rlkey=p2fvgci0z6cnghtqbzt37xtgq&st=6wdc5q7p&dl=0"),
         explanation: `
           <p>Los <strong>prompts para atención al cliente</strong> te permiten automatizar respuestas coherentes, amables y útiles sin perder el toque humano.</p>
 
@@ -145,7 +157,7 @@
         category: "multimedia",
         durationMin: 10,
         tags: ["audio", "transcripción", "resumen"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=930de68e-3fb9-4580-aa07-5de419c97837&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/6n0hmsex52q34xyu1tl04/L04.-Transcripci-n-y-resumen-de-audios.mp4?rlkey=45l4o6m6i4dzfuejjz8ohrw2c&st=ds133nrl&dl=0"),
         explanation: `
           <p>La <strong>transcripción automática</strong> convierte audio a texto en segundos, y la IA puede luego resumir lo más importante, ahorrándote horas de trabajo manual.</p>
 
@@ -183,7 +195,7 @@
         category: "contenido",
         durationMin: 8,
         tags: ["redacción", "textos", "mejora"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=7e11c7fa-acb4-4adf-9fb9-78a6d0d6a93b&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/in89muuvdl1aosw2uw5ym/L05.-Mejora-de-redacci-n.mp4?rlkey=9c5sd4wbkpkq07y0meaez82rb&st=wdxbepp3&dl=0"),
         explanation: `
           <p>La IA puede <strong>mejorar tu redacción</strong> corrigiendo errores, mejorando claridad, ajustando el tono y haciéndote sonar más profesional sin perder tu voz.</p>
 
@@ -221,7 +233,7 @@
         category: "fundamentos",
         durationMin: 12,
         tags: ["ml", "machine-learning", "no-code"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=c3755fe7-818b-4bdd-83e6-de111f63e5ad&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/xhukh4w6wg3k8esszzpmb/L06.-ML-sin-programaci-n-conceptos.mp4?rlkey=strea2vz08qhu3r3amq1oka2f&st=c945378a&dl=0"),
         explanation: `
           <p>El <strong>Machine Learning (ML)</strong> permite que las computadoras aprendan patrones de datos. Y lo mejor: <em>ya no necesitas programar</em> para usarlo gracias a herramientas no-code.</p>
 
@@ -260,7 +272,7 @@
         category: "aplicaciones",
         durationMin: 14,
         tags: ["predicción", "demanda", "análisis"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=5ad5d1b8-f3a0-4920-8ad7-b810ef180ffb&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/gh6jg7wchc8u5fr55rmtz/L07.-Predicci-n-de-demanda-intro.mp4?rlkey=ae5s7479mdg5gyaar2fpq9a9r&st=wci5rvng&dl=0"),
         explanation: `
           <p>La <strong>predicción de demanda</strong> usa datos históricos para anticipar cuánto venderás en el futuro, ayudándote a tomar mejores decisiones de inventario y producción.</p>
 
@@ -298,7 +310,7 @@
         category: "fundamentos",
         durationMin: 10,
         tags: ["métricas", "evaluación"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=90b120e9-c429-4d95-9308-e9c94f66a5f5&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/mdtir6ky0hjsy22c0cptq/L08.-M-tricas-simples.mp4?rlkey=qeoybc9f66r0sv48qohfhw4wu&st=uo7o6yjy&dl=0"),
         explanation: `
           <p>Las <strong>métricas</strong> te dicen qué tan bien funciona un modelo de IA. Son como el reporte de calificaciones de la escuela: números que indican el rendimiento.</p>
 
@@ -337,7 +349,7 @@
         category: "aplicaciones",
         durationMin: 12,
         tags: ["gráficas", "visualización", "datos"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=b47407ed-6be5-485e-bf8b-ae8e6ec82808&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/pw0kpvokptihqwzbw9fem/L09.-Gr-ficas-desde-planillas.mp4?rlkey=nlpcmwuyxk8f2vsw9sosz2rp3&st=fgov1mlg&dl=0"),
         explanation: `
           <p>La IA puede <strong>crear visualizaciones automáticas</strong> de tus datos, sugiriendo el mejor tipo de gráfica y destacando insights importantes sin que sepas diseño.</p>
 
@@ -375,7 +387,7 @@
         category: "multimedia",
         durationMin: 10,
         tags: ["imágenes", "visión", "descripción"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=571031eb-a501-4824-b1ab-0c5bb11cde82&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/8ut0c3cmjxw4l0tpgfod6/L10.-Descripci-n-desde-imagen.mp4?rlkey=nasqyb0g554uyzmtlpfkpbtwq&st=6n8buuva&dl=0"),
         explanation: `
           <p>La <strong>visión por computadora</strong> permite que la IA "vea" y describa imágenes: identifica objetos, personas, textos, emociones y mucho más.</p>
 
@@ -414,7 +426,7 @@
         category: "aplicaciones",
         durationMin: 8,
         tags: ["productos", "catalogación"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=9b32bd52-0fe8-4091-951c-5a2d3b7e3dc0&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/eu67u7ay74uavjwx3bjji/L11.-SKU-OEM-y-sinonimia.mp4?rlkey=cbggblqglxbk2v2wv8glcvgx8&st=26lqadva&dl=0"),
         explanation: `
           <p>La IA puede <strong>identificar productos similares</strong> aunque tengan nombres diferentes, conectando SKUs, códigos OEM y sinónimos automáticamente.</p>
 
@@ -453,7 +465,7 @@
         category: "multimedia",
         durationMin: 10,
         tags: ["fotos", "edición", "móvil"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=cbe283b5-99bc-41a5-9360-5a7f81e3ebc2&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/cai7cvm9xkft6qur2dvac/L12.-Edici-n-r-pida-de-fotos-m-vil.mp4?rlkey=rmt6cvczoflz1bqvphqqfttg2&st=eu52rlbp&dl=0"),
         explanation: `
           <p>La IA en apps móviles te permite <strong>editar fotos profesionalmente</strong> en segundos: eliminar fondos, mejorar calidad, aplicar estilos y más, sin ser diseñador.</p>
 
@@ -492,7 +504,7 @@
         category: "contenido",
         durationMin: 12,
         tags: ["video", "marketing", "contenido"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=b16f06ba-5bd8-478f-9547-67e341253ad5&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/sj5ngp8j2dj0cc505ke0w/L13.-Microvideos-promocionales-30-45-s.mp4?rlkey=i24hbk0k0n60b9g1h2o2tclu4&st=xfnfuhjk&dl=0"),
         explanation: `
           <p>Los <strong>microvideos</strong> son el formato rey en redes sociales. La IA te ayuda a crearlos rápidamente: desde scripts hasta edición automática y subtítulos.</p>
 
@@ -531,7 +543,7 @@
         category: "fundamentos",
         durationMin: 10,
         tags: ["ética", "responsabilidad", "buenas-prácticas"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=2c0e71e7-25ff-477c-9c05-a4207502e7c3&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/ks24fcv5d63tgjyt1cayk/L14.-Uso-responsable-de-IA.mp4?rlkey=rm9cfw2forly6c0dcbherct1k&st=r0sicg96&dl=0"),
         explanation: `
           <p>El <strong>uso responsable de IA</strong> implica entender sus limitaciones, sesgos potenciales y el impacto de tus decisiones automatizadas en personas reales.</p>
 
@@ -571,7 +583,7 @@
         category: "fundamentos",
         durationMin: 12,
         tags: ["sesgos", "verificación", "supervisión"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=442374f5-39cc-4934-a0c4-875c65d39063&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/lin9jdoxhfn5sqk2rcr7q/L15.-Sesgos-y-verificaci-n-humana.mp4?rlkey=d03x19xyhyp35ozo64a2citet&st=fzh94334&dl=0"),
         explanation: `
           <p>Los <strong>sesgos en IA</strong> ocurren cuando los modelos reflejan prejuicios presentes en sus datos de entrenamiento. La verificación humana es esencial para detectarlos y corregirlos.</p>
 
@@ -610,7 +622,7 @@
         category: "aplicaciones",
         durationMin: 8,
         tags: ["reuniones", "productividad"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=f3a54b06-62e9-4231-89f7-145c1dfc8f06&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/do1l15f3edaqnqfp0tiel/L16.-Asistentes-para-reuniones.mp4?rlkey=sgd9jv1coc6u8bqr4c02dt3uf&st=t8li944t&dl=0"),
         explanation: `
           <p>Los <strong>asistentes de IA para reuniones</strong> transcriben, resumen, extraen tareas y documentan decisiones automáticamente mientras tú te enfocas en la conversación.</p>
 
@@ -649,7 +661,7 @@
         category: "fundamentos",
         durationMin: 14,
         tags: ["generativa", "tendencias", "actualidad"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=0b196b03-cb21-4da1-871d-8eb07c4cefa1&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/wvdnr3egmzfttbm1ltexu/L17.-IA-generativa-hoy.mp4?rlkey=yxnxpanotrmoxr1saz7wc03lg&st=2wfm2dpl&dl=0"),
         explanation: `
           <p>La <strong>IA generativa</strong> crea contenido nuevo (texto, imágenes, audio, video, código) que antes solo humanos podían crear. Estamos en medio de una revolución creativa.</p>
 
@@ -690,7 +702,7 @@
         category: "fundamentos",
         durationMin: 12,
         tags: ["cuántica", "futuro"],
-        video: ONEDRIVE("https://onedrive.live.com/personal/6587dfacd1e36ad6/_layouts/15/embed.aspx?UniqueId=07b562c4-3276-420f-b749-b134f9c43e7c&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"),
+        video: DROPBOX("https://www.dropbox.com/scl/fi/bkhjqnp405th6mviwh9tn/L18.-Computaci-n-cu-ntica-intro.mp4?rlkey=yvlt3ylf80ehbg23z8y54yq19&st=tf9svqjx&dl=0"),
         explanation: `
           <p>La <strong>computación cuántica</strong> usa principios de física cuántica para resolver problemas que las computadoras tradicionales tardarían millones de años en resolver.</p>
 
